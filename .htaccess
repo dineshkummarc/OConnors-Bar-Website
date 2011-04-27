@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} staging.paintball-madness.co.uk
+    RewriteRule (.*) http://oconnorsbar.ie/$1 [R=301,L]
+ </IfModule>

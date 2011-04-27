@@ -1,0 +1,17 @@
+/*
+	Cross-browser legends with fieldsets and backgrounds.
+	IE does not render correctly if the fieldset has a legend and a background image or colour.
+*/
+form {
+	margin-top: 18px;
+}
+
+fieldset {
+	position: relative;
+}
+
+legend {
+	left: 22px;
+	position: absolute;
+	top: -18px;
+}

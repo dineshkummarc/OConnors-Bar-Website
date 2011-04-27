@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{#common.title}</title>
+<script type="text/javascript" src="js/fixpng.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="css/filemanager.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/window_clearlooks2.css" />
+<script type="text/javascript" src="../../js/index.php"></script>
+<script type="text/javascript" src="../../language/index.php?type=fm"></script>
+<script type="text/javascript" src="js/fm_theme.js"></script>
+</head>
+<body class="filelistPage">
+<div id="center">
+	<div id="topnav">
+		<div id="topwrap">
+			<div class="toolbar caption">
+				<div class="navigation" id="navigation">
+					<div class="desc">{#common.directory}</div>
+					<div id="curpath" class="path">&nbsp;</div>
+				</div>
+
+				<div id="tools" class="icons">
+					<div id="createdir" class="icon"><a href="javascript:FileManagerTheme.createDir();" title="{#common.createdir}"><img src="img/icons/newfolder.png" width="16" height="16" alt="{#common.createdir}" border="0" /><span class="caption">{#common.createdir}</span></a></div>
+					<div id="upload" class="icon"><a href="javascript:FileManagerTheme.upload();" title="{#common.upload}"><img src="img/icons/add.png" width="16" height="16" alt="{#common.upload}" border="0" /><span class="caption">{#common.upload}</span></a></div>
+					<div id="createdoc" class="icon"><a href="javascript:FileManagerTheme.createDoc();" title="{#common.createfile}"><img src="img/icons/newdoc.png" width="16" height="16" alt="{#common.createfile}" border="0" /><span class="caption">{#common.createfile}</span></a></div>
+					<div id="refresh" class="icon"><a href="javascript:FileManagerTheme.refresh();" title="{#common.refresh}"><img src="img/icons/reload.png" width="16" height="16" alt="{#common.refresh}" border="0" /><span class="caption">{#common.refresh}</span></a></div>
+					<div id="imagemanager" class="icon hidden"><a href="javascript:FileManagerTheme.imagemanager();" title="{#common.imagemanager}"><img src="img/icons/imagemanager.png" width="16" height="16" alt="{#common.imagemanager}" border="0" /><span class="caption">{#common.imagemanager}</span></a></div>
+					<!--
+					<div class="icon"><a href="#" title="{#common.help}"><img src="img/icons/help.png" width="16" height="16" alt="{#common.help}" border="0" /><span class="caption">{#common.help}</span></a></div>
+					-->
+				</div>
+			</div>
+
+			<br style="clear:both;" /><br />
+		</div>
+	</div>
+
+	<br style="clear:both;" />
+
+	<div id="listcontainer">
+		<div id="folders">
+			<div class="panel">
+				<h2>{#panel.categories}</h2>
+				<ul class="categories" id="category_list">
+				</ul>
+
+				<ul class="special">
+					<li><a href="javascript:FileManagerTheme.open('favorite:///', 'folder');" class="favorites">{#panel.favorites}</a></li>
+					<li><a href="javascript:FileManagerTheme.open('history:///', 'folder');" class="history">{#panel.history}</a></li>
+				</ul>
+
+				<h3>{#panel.preview}</h3>
+				<div id="filepreview">
+					<div id="previewpath">&nbsp;</div>
+					<div id="previewwrap">
+						<iframe id="preview" src="javascript:''" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+					</div>
+					<div id="view_actions" class="actions">
+						<ul>
+							<li id="insert"><a href="javascript:FileManagerTheme.insert();">{#actions.insert}</a> |</li>
+							<li id="download"><a href="javascript:FileManagerTheme.download();">{#actions.download}</a> |</li>
+							<li id="view"><a href="javascript:FileManagerTheme.view();">{#actions.view}</a></li>
+							<li class="end"> | </li>
+						</ul>
+					</div>
+				</div>
+				<div id="folderpreview">
+				</div>
+			</div>
+		</div>
+
+		<div id="listing">
+			<div id="dirinfo" class="pagenav">
+				<!-- Gets replaced by JS -->
+			</div>
+
+			<div id="progress" class="pagenav">
+				{#filelist.loading}
+			</div>
+
+			<div class="filemanagertop">
+				<ul id="selection_actions">
+					<li id="selectall"><a href="javascript:FileManagerTheme.toggleAllRows(true);">{#actions.select_all}</a> | </li>
+					<li id="unselectall"><a href="javascript:FileManagerTheme.toggleAllRows(false);">{#actions.unselect_all}</a> &nbsp; &nbsp; </li>
+					<li>{#filelist.with_selected}</li>
+					<!--
+					<li>{#filelist.insert}</li>
+					<li>{#filelist.download}</li>
+					-->
+					<li id="cut"><a href="javascript:FileManagerTheme.cut();">{#actions.cut}</a> | </li>
+					<li id="copy"><a href="javascript:FileManagerTheme.copy();">{#actions.copy}</a> | </li>
+					<li id="paste"><a href="javascript:FileManagerTheme.paste();">{#actions.paste}</a> | </li>
+					<li id="rename"><a href="javascript:FileManagerTheme.renameFiles();">{#actions.rename}</a> | </li>
+					<li id="delete"><a href="javascript:FileManagerTheme.deleteFiles();">{#actions.deleteit}</a> | </li>
+					<li id="zip"><a href="javascript:FileManagerTheme.zipFiles();">{#actions.zip}</a> </li>
+				</ul>
+			</div>
+
+			<div id="filemanagerlist">
+				<div>
+					<table class="filelist hoverrow sortable" cellpadding="0" cellspacing="0" summary="file list">
+						<thead>
+							<tr>
+								<th class="check">&nbsp;</th>
+								<th class="file"><a id="sortname" href="javascript:FileManagerTheme.updateFileList('name');" class="sort">{#filelist.filename}</a></th>
+								<th><a id="sortsize" href="javascript:FileManagerTheme.updateFileList('size');" class="sort">{#filelist.size}</a></th>
+								<th><a id="sorttype" href="javascript:FileManagerTheme.updateFileList('type');" class="sort">{#filelist.type}</a></th>
+								<th><a id="sortmodified" href="javascript:FileManagerTheme.updateFileList('modified');" class="sort">{#filelist.modified}</a></th>
+							</tr>
+						</thead>
+						<tbody id="filelist">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br style="clear:both;" /><br /><br />
+
+	<script id="dirinfo_template" type="text/moxiecode-template">
+		<![CDATA[
+			{#filelist.info_dirs} {$dirs}, {#filelist.info_files} {$files}, {#filelist.info_size} {$filesize|sizefix}, {#filelist.info_access} {$access}
+		]]>
+	</script>
+
+	<script id="folders_template" type="text/moxiecode-template">
+		<![CDATA[
+			<li><a href="javascript:FileManagerTheme.open('{$path}','{$type}');">{$name}</a></li>
+		]]>
+	</script>
+
+	<script id="filelist_item_template" type="text/moxiecode-template">
+		<![CDATA[
+			<tr id="file_{$$index}" class="{$type}">
+				<td class="check"><a href="#" class="checkbox"></a></td>
+				<td class="file"><a href="javascript:void(0);" class="{$type}">{$name}</a></td>
+				<td>{$size|sizefix}</td>
+				<td>{$type}</td>
+				<td>{$modified}</td>
+			</tr>
+		]]>
+	</script>
+</div>
+
+<script type="text/javascript">translatePage();</script>
+
+</body>
+</html>
