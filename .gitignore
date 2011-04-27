@@ -1,3 +1,4 @@
 /webroot/img/uploads
 /webroot/files
 /config/database*
+/tmp/*
